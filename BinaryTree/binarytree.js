@@ -103,6 +103,74 @@ const treeIncludesBreadth = (root, target) => {
 
 //console.log(treeIncludesRecursive(a, 'g'));
 
-const treeSumRecursive(){
-    
+
+
+const one = new Node(3);
+const two = new Node(11);
+const three = new Node(4);
+const four = new Node(4);
+const five = new Node(-2);
+const six = new Node(1);
+
+one.left = two;
+one.right = three;
+two.left = four;
+two.right = five;
+three.right = six;
+
+
+const treeSumRecursive = (root) =>  {
+    if(root === null){ return 0; }
+    const sum = root.val;
+
+    return sum + treeSumRecursive(root.left) + treeSumRecursive(root.right);
 }
+
+//console.log(treeSumRecursive(one));
+
+const treeSumIterative = (root) => {
+    if(root === null) return 0;
+    let sum = 0;
+    const stack = [root];
+    while(stack.length > 0){      
+        const current = stack.pop();
+        sum += current.val;
+
+        if(current.right){ stack.push(current.right); }
+        if(current.left) { stack.push(current.left); }
+
+    }
+
+    return sum;
+}
+
+//console.log(treeSumIterative(null));
+
+const treeSumBreadth = (root) => {
+    if(root === null) { return 0; }
+    let sum = 0;
+    const queue = [ root ];
+    while(queue.length > 0){
+        const current = queue.shift();
+        sum += current.val;
+
+        if(current.left) { queue.push(current.left); }
+        if(current.right) { queue.push(current.right); }
+    }
+
+    return sum;
+
+}
+
+//console.log(treeSumBreadth(one));
+
+const treeMinDepth = (root) => {
+    let currentMin = Infinity;
+    const stack = [ root ];
+    while(stack.length > 0){
+        
+    }
+
+
+}
+
