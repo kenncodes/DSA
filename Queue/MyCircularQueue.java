@@ -18,8 +18,8 @@ class MyCircularQueue {
     // add to tail
     public boolean enQueue(int value) {
         if (isEmpty()) {
-            head++;
-            tail++;
+            head = 0;
+            tail = 0;
             queue[0] = value;
         } else if (isFull()) {
             return false;
